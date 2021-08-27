@@ -1,4 +1,4 @@
-from donation_pkg.homepage import show_homepage, donate
+from donation_pkg.homepage import show_homepage, donate, show_donations
 from donation_pkg.user import login, register
 
 database = {
@@ -33,7 +33,7 @@ while True:
             if donation != None:
                 donations.append(donation)
     if option == "4":
-        print("TODO: Write Show Donations Functionality")
+        show_donations(donations)
     if option == "5":
         print("\nLeaving DonateMe...\n")
         exit()
