@@ -15,7 +15,8 @@ def donate(username):
     try:
         donation_amt = float(donation_amt)
         donation = "Bob donated $"+str(donation_amt).format("{: .2f}"+"\n")
-        print("Thank you,", username)
+        print("Thank you for your donation,", username)
         return donation
     except:
         print("Invalid amount.\n")
+        return None
