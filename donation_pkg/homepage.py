@@ -1,5 +1,5 @@
 def show_homepage():
-    print("\n    === DonateMe Homepage ===")
+    print("\n      === DonateMe Homepage ===")
     print("------------------------------------------")
     print("| 1.   Login      | 2.   Register        |")
     print("------------------------------------------")
@@ -8,3 +8,14 @@ def show_homepage():
     print("------------------------------------------")
     print("|            5.    Exit                  |")
     print("------------------------------------------")
+
+
+def donate(username):
+    donation_amt = input("Enter amount to donate: ")
+    try:
+        donation_amt = float(donation_amt)
+        donation = "Bob donated $"+str(donation_amt).format("{: .2f}"+"\n")
+        print("Thank you,", username)
+        return donation
+    except:
+        print("Invalid amount.\n")
