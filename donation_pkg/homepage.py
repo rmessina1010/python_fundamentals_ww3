@@ -14,18 +14,20 @@ def donate(username):
     donation_amt = input("Enter amount to donate: ")
     try:
         donation_amt = float(donation_amt)
-        donation = username+" donated $" + "{:.2f}".format(donation_amt) + "\n"
+        donation = username+" donated $" + "{:.2f}".format(donation_amt)
         print("Thank you for your donation,", username)
-        return donation
+        return (donation, donation_amt)
     except:
         print("Invalid amount.\n")
         return None
 
 
-def show_donations(donations):
+def show_donations(donations, total):
     print("\n--- All Donations ---")
     if (len(donations) == 0):
         print("Currently, there are no donations.")
+        return
     else:
         for donation in donations:
             print(donation)
+        print("Total: " + "{:.2f}".format(total))
