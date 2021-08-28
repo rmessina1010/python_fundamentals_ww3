@@ -14,6 +14,8 @@ def donate(username):
     donation_amt = input("Enter amount to donate: ")
     try:
         donation_amt = float(donation_amt)
+        if donation_amt <= 0:
+            raise ValueError('Must be greater than 0')
         donation = username+" donated $" + "{:.2f}".format(donation_amt)
         print("Thank you for your donation,", username)
         return (donation, donation_amt)
