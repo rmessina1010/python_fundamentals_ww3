@@ -32,4 +32,5 @@ def show_donations(donations, total):
     else:
         for donation in donations:
             print(donation)
+        print("-------------------")
         print("Total: " + "{:.2f}".format(total))
