@@ -1,12 +1,12 @@
 def show_homepage():
     print("\n      === DonateMe Homepage ===")
     print("------------------------------------------")
-    print("| 1.   Login      | 2.   Register        |")
+    print("| 1.   Login         | 2.   Register     |")
     print("------------------------------------------")
     print("------------------------------------------")
-    print("| 3.    Donate    | 4.   Show Donations  |")
+    print("| 3.    Donate       | 4. Show Donations |")
     print("------------------------------------------")
-    print("|            5.    Exit                  |")
+    print("| 5. Your Donations  | 6.   Exit         |")
     print("------------------------------------------")
 
 
@@ -24,13 +24,15 @@ def donate(username):
         return None
 
 
-def show_donations(donations, total):
-    print("\n--- All Donations ---")
+def show_donations(donations, total, who):
+    print("\n--- " + ("All" if who == "" else who+"'s") + " Donations ---")
     if (len(donations) == 0):
         print("Currently, there are no donations.")
         return
     else:
         for donation in donations:
+            if who != "" and not donation.startswith(who):
+                continue
             print(donation)
         print("-------------------")
         print("Total: " + "{:.2f}".format(total))

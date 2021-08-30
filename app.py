@@ -2,7 +2,7 @@ from donation_pkg.homepage import show_homepage, donate, show_donations
 from donation_pkg.user import login, register
 
 database = {
-    "admin": {"pass": "password123", "reg_name": "admin"}
+    "admin": {"pass": "password123", "reg_name": "admin", "sub_total": 0}
 }
 donations = []
 authorized_user = ""
@@ -31,7 +31,7 @@ while True:
         authorized_user = register(database, username, password)
         if authorized_user != "":
             database[authorized_user] = {
-                "pass": password, "reg_name": username}
+                "pass": password, "reg_name": username, "sub_total": 0}
             display_name = username
     if option == "3":
         if authorized_user == "":
@@ -41,8 +41,13 @@ while True:
             if type(donation) is tuple:
                 donations.append(donation[0])
                 total_donations += donation[1]
+                database[authorized_user]["sub_total"] += donation[1]
     if option == "4":
-        show_donations(donations, total_donations)
+        show_donations(donations, total_donations, "")
     if option == "5":
+        sub_T = total_donations if authorized_user == "" else database[
+            authorized_user]["sub_total"]
+        show_donations(donations, sub_T, display_name)
+    if option == "6":
         print("\nLeaving DonateMe...\n")
         exit()
